@@ -24,6 +24,8 @@ dependencies {
 	testImplementation("org.jetbrains.kotlin:kotlin-test:${kotlinVersion}")
 	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5:${kotlinVersion}")
 	testImplementation("org.mockito.kotlin:mockito-kotlin:4.0.0")
+	testImplementation("io.rest-assured:spring-mock-mvc:4.4.0")
+	testImplementation("io.rest-assured:rest-assured:4.4.0")
 }
 
 tasks.withType<KotlinCompile> {

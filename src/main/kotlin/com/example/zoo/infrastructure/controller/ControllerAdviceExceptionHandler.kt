@@ -18,14 +18,14 @@ class ControllerAdviceExceptionHandler {
     @ExceptionHandler(ResourceNotFoundException::class)
     @ResponseStatus(value = HttpStatus.NOT_FOUND)
     fun resourceNotFoundException(ex: ResourceNotFoundException, request: WebRequest): ErrorMessage {
-        return ErrorMessage(HttpStatus.NOT_FOUND.value(), Instant.now(), ex.message ?: "", ex.message ?: "");
+        return ErrorMessage(HttpStatus.NOT_FOUND.value(), Instant.now(), ex.message ?: "");
     }
 
     @ExceptionHandler(DomainException::class)
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     fun domainException(ex: DomainException, request: WebRequest): ErrorMessage {
-        return ErrorMessage(HttpStatus.BAD_REQUEST.value(), Instant.now(), ex.message ?: "", ex.message ?: "");
+        return ErrorMessage(HttpStatus.BAD_REQUEST.value(), Instant.now(), ex.message ?: "");
     }
 }
 
-class ErrorMessage(val statusCode: Int, val timeStamp: Instant, val message: String, val description: String)
+class ErrorMessage(val statusCode: Int, val timeStamp: Instant, val message: String)
