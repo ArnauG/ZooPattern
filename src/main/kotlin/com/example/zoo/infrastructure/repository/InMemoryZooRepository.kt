@@ -4,14 +4,14 @@ import com.example.zoo.domain.Zoo
 import com.example.zoo.domain.ZooIdentity
 import com.example.zoo.domain.ZooRepository
 
-class InMemoryZooRepository(private var zooMutableMap: MutableMap<Int, Zoo>) : ZooRepository {
+class InMemoryZooRepository(private var zooMutableMap: MutableMap<ZooIdentity,Zoo>) : ZooRepository {
 
     override fun save(zoo: Zoo) {
-        zooMutableMap[zoo.id.id] = zoo
+        zooMutableMap[zoo.id] = zoo
     }
 
     override fun get(identity: ZooIdentity): Zoo {
-        return zooMutableMap[identity.id] ?: throw ResourceNotFoundException("Zoo ${identity.id} not found")
+        return zooMutableMap[identity] ?: throw ResourceNotFoundException("Zoo ${identity.id} not found")
     }
 }
 

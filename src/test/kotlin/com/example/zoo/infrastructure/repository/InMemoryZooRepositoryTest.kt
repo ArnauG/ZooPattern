@@ -10,7 +10,7 @@ import kotlin.test.assertFailsWith
 
 internal class InMemoryZooRepositoryTest {
     private lateinit var repository: InMemoryZooRepository
-    private var zooMutableMap = mutableMapOf<Int, Zoo>()
+    private var zooMutableMap = mutableMapOf<ZooIdentity, Zoo>()
 
     @BeforeEach
     internal fun setUp() {
@@ -21,7 +21,7 @@ internal class InMemoryZooRepositoryTest {
     fun `it should save a Zoo`() {
         val aZoo = ZooHelper.getAZoo()
         repository.save(aZoo)
-        assertEquals(aZoo, zooMutableMap[aZoo.id.id])
+        assertEquals(aZoo, zooMutableMap[aZoo.id])
     }
 
     @Test
