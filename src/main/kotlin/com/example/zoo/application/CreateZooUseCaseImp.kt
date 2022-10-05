@@ -18,13 +18,11 @@ class CreateZooUseCaseImp(
 ) : CreateZooUseCase {
     override fun create(zooPostRequest: ZooPostRequest): Zoo {
         val zoo = Zoo(
-                ZooIdentity(zooIdentitySequencer.getNext()),
-                ZooName(zooPostRequest.name),
-                ZooSurface(zooPostRequest.surface)
-            )
+            ZooIdentity(zooIdentitySequencer.getNext()),
+            ZooName(zooPostRequest.name),
+            ZooSurface(zooPostRequest.surface)
+        )
         zooRepository.save(zoo)
         return zoo
     }
 }
-
-

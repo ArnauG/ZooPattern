@@ -22,5 +22,3 @@ data class ZooSurface(val surfaceM2: Int) {
 
     override fun toString() = "$surfaceM2 m^2"
 }
-
-

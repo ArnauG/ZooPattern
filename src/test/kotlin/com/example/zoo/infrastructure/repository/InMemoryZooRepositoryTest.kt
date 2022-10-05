@@ -9,7 +9,7 @@ import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 
 internal class InMemoryZooRepositoryTest {
-    private lateinit var repository : InMemoryZooRepository
+    private lateinit var repository: InMemoryZooRepository
     private var zooMutableMap = mutableMapOf<Int, Zoo>()
 
     @BeforeEach

@@ -13,7 +13,6 @@ class InMemoryZooRepository(private var zooMutableMap: MutableMap<Int, Zoo>) : Z
     override fun get(identity: ZooIdentity): Zoo {
         return zooMutableMap[identity.id] ?: throw ResourceNotFoundException("Zoo ${identity.id} not found")
     }
-
 }
 
 class ResourceNotFoundException(s: String) : RuntimeException(s)

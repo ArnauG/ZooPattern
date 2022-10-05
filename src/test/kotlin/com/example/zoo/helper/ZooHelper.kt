@@ -9,7 +9,7 @@ const val ZOO_NAME = "zoo Name"
 const val ZOO_SURFACE = 10000
 
 class ZooHelper {
-    companion object{
+    companion object {
         fun getAZoo() = Zoo(ZooIdentity(1), ZooName(ZOO_NAME), ZooSurface(ZOO_SURFACE))
     }
 }

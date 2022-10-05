@@ -2,7 +2,6 @@ package com.example.zoo.integration
 
 import com.example.zoo.ZooApplication
 import io.restassured.RestAssured
-import io.restassured.http.ContentType
 import org.hamcrest.Matchers
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Value

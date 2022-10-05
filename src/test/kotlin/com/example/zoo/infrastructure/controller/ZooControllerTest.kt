@@ -47,7 +47,7 @@ class ZooControllerTest {
             "name": "$zooName",
             "surface": $surface
           }
-          """.trimIndent()
+                    """.trimIndent()
                 )
         )
             .andExpect(MockMvcResultMatchers.status().isOk)

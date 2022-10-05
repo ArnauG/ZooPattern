@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 
-
 internal class ZooSurfaceTest {
     @Test
     fun `it should instance a ZooSurface`() {
