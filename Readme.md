@@ -21,5 +21,6 @@ This is one of the most common creation pattern. And this is the objective of ou
 - The sum of the surface of all zones can not be higher than the zoo surface size.
 - When recover the data from a Zoo all zones are returned too.
 - We have three types of zones MONKEY ZONE, ELEPHANT ZONE AND LION ZONE
+- Zone name must be unique
 
 Task 1: Create and endpoint to add new zones to a specific Zoo

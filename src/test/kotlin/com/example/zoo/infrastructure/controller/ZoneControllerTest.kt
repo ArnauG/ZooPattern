@@ -2,7 +2,6 @@ package com.example.zoo.infrastructure.controller
 
 import com.example.zoo.application.CreateZoneUseCase
 import com.example.zoo.domain.Zone
-import com.example.zoo.domain.ZoneId
 import com.example.zoo.domain.ZoneName
 import com.example.zoo.domain.ZoneSurface
 import com.example.zoo.domain.ZoneType
@@ -35,7 +34,7 @@ internal class ZoneControllerTest {
         val givenZoneRequest = ZonePostRequest(zoneName, surface, type)
 
         whenever(createZoneUseCase.save(zooId, givenZoneRequest))
-            .thenReturn(Zone(ZoneId(zoneName), ZoneName(zoneName), ZoneSurface(surface), ZoneType.MONKEY))
+            .thenReturn(Zone(ZoneName(zoneName), ZoneSurface(surface), ZoneType.MONKEY))
         val expectedResponse = "{\"name\":\"$zoneName\", \"surface\":$surface, \"type\":\"MONKEY\"}"
         mvc.perform(
             MockMvcRequestBuilders.post("/zoo/$zooId/zone")
