@@ -1,10 +1,10 @@
 package com.example.zoo.application
 
-import com.example.zoo.domain.Zoo
+import com.example.zoo.domain.ZooImp
 import com.example.zoo.domain.ZooIdentity
 import com.example.zoo.domain.ZooIdentitySequencer
 import com.example.zoo.domain.ZooName
-import com.example.zoo.domain.ZooRepository
+import com.example.zoo.domain.ZooRepositoryWriter
 import com.example.zoo.domain.ZooSurface
 import com.example.zoo.infrastructure.controller.ZooPostRequest
 import org.junit.jupiter.api.Test
@@ -20,7 +20,7 @@ import kotlin.test.assertEquals
 internal class CreateZooUseCaseImpTest {
 
     @Mock
-    private lateinit var zooRepository: ZooRepository
+    private lateinit var zooRepositoryWriter: ZooRepositoryWriter<ZooImp>
 
     @Mock
     private lateinit var zooIdentitySequencer: ZooIdentitySequencer
@@ -30,11 +30,11 @@ internal class CreateZooUseCaseImpTest {
         val surface = 10000
         val name = "zoo name"
         val givenAZooRequest = ZooPostRequest(name, surface)
-        val expectedZoo = Zoo(ZooIdentity(1), ZooName(name), ZooSurface(surface))
+        val expectedZoo = ZooImp(ZooIdentity(1), ZooName(name), ZooSurface(surface))
         whenever(zooIdentitySequencer.getNext()).thenReturn(1)
-        doNothing().`when`(zooRepository).save(any())
+        doNothing().`when`(zooRepositoryWriter).save(any())
 
-        var createZooUseCaseImp = CreateZooUseCaseImp(zooIdentitySequencer, zooRepository)
+        var createZooUseCaseImp = CreateZooUseCaseImp(zooIdentitySequencer, zooRepositoryWriter)
 
         var zoo = createZooUseCaseImp.create(givenAZooRequest)
 

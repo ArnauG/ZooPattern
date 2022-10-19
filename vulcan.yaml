@@ -1,0 +1,14 @@
+# vulcan-local config file. More: https://github.com/adevinta/vulcan-local#vulcanyaml-config-file
+
+conf:
+  repositories:
+    - https://vulcan-local-checktypes-spain.s3.eu-west-1.amazonaws.com/checktypes-stable.json
+
+# List of targets to scan generating checks from all available checktypes
+
+targets:
+  - target: .
+  - target: local/docker-target:latest
+    assetType: DockerImage
+
+# Findings exclusions. More: https://github.com/adevinta/vulcan-local#exclusions

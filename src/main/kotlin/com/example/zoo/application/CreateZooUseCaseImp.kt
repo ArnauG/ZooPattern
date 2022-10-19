@@ -1,28 +1,28 @@
 package com.example.zoo.application
 
-import com.example.zoo.domain.Zoo
+import com.example.zoo.domain.ZooImp
 import com.example.zoo.domain.ZooIdentity
 import com.example.zoo.domain.ZooIdentitySequencer
 import com.example.zoo.domain.ZooName
-import com.example.zoo.domain.ZooRepository
+import com.example.zoo.domain.ZooRepositoryWriter
 import com.example.zoo.domain.ZooSurface
 import com.example.zoo.infrastructure.controller.ZooPostRequest
 
 interface CreateZooUseCase {
-    fun create(zooPostRequest: ZooPostRequest): Zoo
+    fun create(zooPostRequest: ZooPostRequest): ZooImp
 }
 
 class CreateZooUseCaseImp(
     private val zooIdentitySequencer: ZooIdentitySequencer,
-    private val zooRepository: ZooRepository
+    private val zooRepositoryWriter: ZooRepositoryWriter<ZooImp>
 ) : CreateZooUseCase {
-    override fun create(zooPostRequest: ZooPostRequest): Zoo {
-        val zoo = Zoo(
+    override fun create(zooPostRequest: ZooPostRequest): ZooImp {
+        val zoo = ZooImp(
             ZooIdentity(zooIdentitySequencer.getNext()),
             ZooName(zooPostRequest.name),
             ZooSurface(zooPostRequest.surface)
         )
-        zooRepository.save(zoo)
+        zooRepositoryWriter.save(zoo)
         return zoo
     }
 }

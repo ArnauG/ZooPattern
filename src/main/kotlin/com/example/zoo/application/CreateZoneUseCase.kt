@@ -8,15 +8,18 @@ interface CreateZoneUseCase {
 }
 
 class CreateZoneUseCaseImp(
-    private val zoneRepository: ZoneRepository
-): CreateZoneUseCase {
+    private val zoneRepository: ZoneRepository,
+    private val zooRepositoryReader: ZooRepositoryReader
+) : CreateZoneUseCase {
     override fun save(zooId: Int, zonePostRequest: ZonePostRequest): Zone {
-        val zone = Zone(
+        val zooIdentity = ZooIdentity(zooId)
+        var zoo = zooRepositoryReader.get(zooIdentity)
+        val zone = zoo.addZone(Zone(
             ZoneName(zonePostRequest.name),
             ZoneSurface(zonePostRequest.surface),
-            ZoneType(zonePostRequest.type.MONKEY),
-        )
-        zoneRepository.save(zone)
+            ZoneType.valueOf(zonePostRequest.type.uppercase()),
+        ))
+        zoneRepository.save(zoo.identity(), zone)
         return zone
     }
 }

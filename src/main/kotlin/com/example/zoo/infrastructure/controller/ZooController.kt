@@ -35,7 +35,7 @@ class ZooController(
         @PathVariable id: Int
     ): ResponseEntity<ZooGetResponse> {
         var zoo = getZooUseCase.get(id)
-        return ResponseEntity.ok(ZooGetResponse(zoo.id.toString(), zoo.name.toString(), zoo.surface.toString()))
+        return ResponseEntity.ok(ZooGetResponse(zoo.identity().toString(), zoo.name().toString(), zoo.surface().toString()))
     }
 }
 

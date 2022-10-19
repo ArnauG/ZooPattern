@@ -1,6 +1,24 @@
 package com.example.zoo.domain
 
-data class Zoo(val id: ZooIdentity, val name: ZooName, val surface: ZooSurface)
+interface Zoo {
+    fun addZone(zone: Zone): Zone
+    fun identity(): ZooIdentity
+    fun name(): ZooName
+    fun surface(): ZooSurface
+}
+
+data class ZooImp(val id: ZooIdentity, val name: ZooName, val surface: ZooSurface) : Zoo {
+    private var zones = HashMap<ZoneName, Zone>()
+    override fun addZone(zone: Zone): Zone {
+        return zone
+    }
+
+    override fun identity(): ZooIdentity = id
+
+    override fun name() = name
+
+    override fun surface() = surface
+}
 
 data class ZooIdentity(val id: Int) {
     override fun toString() = "$id"
